@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encapsulamiento  ECMAScript 6</title>
+</head>
+<body>
+    <h1>Modulos </h1>
+    <p>
+        El uso de los módulos en JavaScript depende de las declaraciones Export e Import.
+        <br>
+        <br>
+        Para modular, solo basta que el archivo tenga la extensión .js, pero el motor V8 que es el que corre en los navegadores, recomienda usar la extensión .mjs
+        <ul>
+            <li>
+                Esto es util porque queda claro cuál archivo es modulo y cual no.
+            </li>
+            <li>
+                Asegura que los archivos de modulo sean tratados como tal por la extensión Babel o Node.js
+            </li>
+        </ul>
+    </p>
+    <h2>¿Como exportar?</h2>
+    <p>
+        <ol>
+            <li>
+                Colocar en frente de cada elemento la palabra export
+            </li>
+            <li>
+                Exportar en una sola declaración al final del archivo modulo las características que se quieren exportar, ejemplo:
+                <script>
+                    export {PlatziClass, Student, LearningPaths};
+                </script>
+            </li>
+        </ol>
+    </p>
+    <h2>¿Como importar?</h2>
+    <p>
+        La importación obviamente se hace en el script que queremos usar dichos elementos.
+        <script>
+            import {PlatziClass, Student, LearningPaths} from '/ruta';
+        </script>
+    </p>
+    <p>¿Como aplicar el modulo en HTML?</p>
+    <script>
+        // <script type="module" src="main.js"> 
+    </script>
+    <p>
+        la clase4modulo tiene un ejemplo de como es un modulo
+        <br>
+        la clase4 es para jugar con el modulo creado
+    </p>
+</body>
+</html>
