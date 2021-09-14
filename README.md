@@ -8,4 +8,4 @@ Repositorio de las clases de los cursos de:
  * Curso de Programación Orientada a Objetos: POO
  * Curso Básico de Programación Orientada a Objetos con JavaScript
 Curso Básico de Programación Orientada a Objetos con JavaScript
-
+ *Curso de programación intermedia Orientado a Objectos
