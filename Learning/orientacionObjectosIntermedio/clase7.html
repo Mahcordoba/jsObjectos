@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipos con atributos privados</title>
+</head>
+<body>
+    <script>
+        function prueba(name)
+        {
+            const privada = 
+            {
+                '_name': name
+            }
+            //Para agregar getter and setter en prototipos podemos hacer esto 
+            Object.defineProperty(this, "name", {
+                get() {
+                    return privada['_name']
+                },
+                set(newName) {
+                    privada._name = newName
+                }
+            })
+        }
+        // Si se hace por fuera la hacemos así
+        // Object.defineProperty(prueba.prototype, "name", {
+        //         get() {
+        //             return this._name
+        //         },
+        //         set(newName) {
+        //             this._name = newName
+        //         }
+        //     })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects copiar objectos js</title>
+</head>
+<body>
+    <h1>Memora en js</h1>
+    <p>
+        en js existen dos lugares donde se alamcena la información el stack en este lugar solo se almacenan nombre de la variable y su valor, esta memoria es muy rápida pero es de espacio limitado. <br>
+        por eso existe la heap aqui se guardan las otras cosas de js como objectos pero esta memoria es mas desordena y lenta que la anterior. <br>
+        Pero cuando declaramos un objecto queda la cosa así 
+        en stack queda el nombre del objecto y en su valor que un pointer y este apunta a un lugar en memoria de heap donde esta almacenado el object. <br> 
+    </p>
+    <p>
+        🎳 Las variables son referencias a un espacio en memoria. <br>
+        🎩 Los navegadores web usan dos tipos de memorias: Stack y Heap. <br>
+        📁 La memoria Stack es muy rápida, pero sin tanto espacio. Aquí se guardan los valores primitivos (booleanos, strings, números…). <br>
+        🌪 La memoria Heap es más lenta, pero permite guardar enormes cantidades de información (son como los tornados: grandes, lentos y desordenados). En esta memoria guardamos los valores de los objetos ({...}).
+    </p>
+    <script>
+        // Shallow Copy se refiere a la forma de crear un nuevo objeto a partir de las propiedades de otro. Esta copia solo se hace a un nivel alto, no se hace con objetos dentro de objetos (nested objects), lo que provoca que la modificación de una de sus propiedades, modifique el objeto principal.
+        //Examples 
+        const obj1 = {
+            a: 'a',
+            b: 'b'
+        }
+        //primera forma de copiar un object 
+        const obj2 = {}
+        for(copia in obj1)
+        {
+            obj2[copia] = obj1[copia]
+        }
+        //Esto nos permite copiar el objecto y podemos hacer modificaciones a cada uno sin afectar al objecto principal o viseversa 
+        //Segunda forma 
+        const obj3 = Object.assign({}, obj1)
+        // Esto hace lo mismo que la primera forma 
+        //Tercera forma de copy Objects
+        const obj4 = Object.create(obj1)
+        //Este lo que hace es apuntar a la memoria del objecto padre en este caso obj1, pero si se modifica algun elemento del objecto hijo este no afectara al padre pero si el padre es modificado el hijo tambien se modifica.
+        //::::::::::::::::::::::::::::::::::::::::::::
+        // JSON.parse y JSON.stringify
+        //JSON.stringify() Este Comviete un objecto en strings en forma de objectos y este puede tambien convertir a strings lo objectos que esten dentro de un objecto 
+        // JSON.parse() Este convierte un json.stringify en un objecto sigamos con nuestro ejemplo anterior 
+        const objectoComplejo = JSON.stringify(obj1)
+        const obj5 = JSON.parse(objectoComplejo)
+        //Gracias a esto podemos separar al objecto padre del hijo y si se hacen cambios ya no afectara a ninguno de los dos pero esta forma no copia funciones mirar clase3
+    </script>
+</body>
+</html>

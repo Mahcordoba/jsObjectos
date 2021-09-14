@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects privados</title>
+</head>
+<body>
+    <script>
+        //En esta ocación usamos las funciones pattern para crear objectos 'Module pattern' or 'Fabric pattern'
+        //Con esta funcion podemos crear lo mas parecido a atributos privados
+        //Por convencion al crear una funcion de Moudule pattern hay escribirle create+nombre 
+        function createFabricaObjectos({
+            name,
+            age,
+            email = 'no tiene correo'
+        })//Gracias Roro se pueden enviar objectos y sus argumentos pueden estar 
+        {
+            const private = 
+            {
+                '_name':name
+            }
+            const public = 
+            {
+                age,
+                email,
+                modificarName(newName)
+                {
+                    private._name = newName
+                },
+                mostrarName()
+                {
+                    return private['_name']
+                }
+            }
+            Object.defineProperty(public, "mostrarName", {
+                writable: false,
+                configurable: false
+            })// mas informacion en la clase 1 
+            Object.defineProperty(public, "modificarName", {
+                writable: false,
+                configurable: false
+            })
+            return public 
+        }
+        const pablito = createFabricaObjectos({age:18,name:'pablito'})
+        console.log(pablito)
+        //Este tipo de objectos no se crean con la palabra reservada new 
+        // Para tener en cuenta tambien se pueden agregar get y set a la funcion pero si se intenta modificar con defineProperty lo mas probable es que dejen de funcionar
+    </script>
+</body>
+</html>

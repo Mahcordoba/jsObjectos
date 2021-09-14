@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object duck typing</title>
+</head>
+<body>
+    <h1>¿Que es la realidad?</h1>
+    <p>
+        Para saber si algo es real usamos parametros para definir que es real o imaginario.
+        Uno de estos parametros puede ser el tacto si se puede tocar es real
+    </p>
+    <h2>duck typing</h2>
+    <p>
+        Es la forma de programar donde indentificamos los elementos  y vemos cual es cual, dependiendo de los metodos y atributos que tenga por dentro  
+    </p>
+    <script>
+        function createotherFuncion({
+            learning: []
+        })
+        {
+            const private = 
+            {
+                '_learning':learning
+            }
+            const public = 
+            {
+                get learning()
+                {
+                    return private[_learning]
+                },
+                set learning(newLp)//newLp = newLearningPaths
+                {
+                    //con Duck typing lo que buscamos es validar la informacion que recibimos para verificar que estamos recibiendo lo que queremos pero este puede llegar un objecto parecido 
+                    if(!newLp.name)
+                    {
+                        console.warn('Diculpa no tiene nombre este LearningPaths')
+                        return
+                    }
+                    if(!newLp.courses)
+                    {
+                        console.warn('No hay cursos verifica lo que estas enviando')
+                        return
+                    }
+                    if(!Array.isArray(newLp.courses))
+                    {
+                        console.warn('No hay un array de cursos')
+                        return
+                    }
+                    private._learning.push(newLp)
+                } 
+            }   
+        }
+    </script>
+</body>
+</html>

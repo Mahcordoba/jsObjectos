@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object recursividad</title>
+</head>
+<body>
+    <h1>Deep copy con recursividad</h1>
+    <p>
+        Utilizaresmos recursividad para crear copia de los objetos y que no se rompan si tenemos objetso dentro de objetos dentro de objetos, o si tenemos metodos dentro de nuestros objetos.
+        <br>
+        Bien, deep copy en muchos aspectos es un gran algoritmo con manejo de datos, recursividad, etc etc, por lo tanto ire escribiendo fracciones de codigo y explicandolas, y cua do termine de explicar todo, pondre el algoritmo completo.
+    </p>
+    <script>
+        const obj1 = 
+        {
+            a: "a",
+            b: "b",
+            c: {
+            d: "d",
+            e: "e", 
+            },
+            editA() {
+                this.a = "AAAAA";
+            }
+        }; 
+        
+        function isObject(subject) {
+            return typeof subject == "object"
+        }// Funcion que validad si es un objecto
+        function esUnArray(subject) {
+            return Array.isArray(subject);
+        }//Funcion que valida si es un array no hay necesidad de crearla ya que los arrays ya tienen una funcion que hace esto y preciso se ve en el codigo.
+        function deepCopy(subject)
+        {
+            let copySuject
+            //dentro de sta funcion sucedera todo,el copysubject guardara los datos, este esta esperando a saber si los datos son objetos,arrays u otras cosas como strings
+            const subjectIsArray = esUnArray(subject);
+            const subjectIsObject = isObject(subject);
+
+            if(subjectIsArray)
+            {
+                copySuject = []
+            }else if(subjectIsObject)
+            {
+                copySuject = {}
+            }else
+            {
+                return subject
+            } 
+            //por ultimo empezamos a trabajar con los datos ya validados, segun el dato que sea correspondiente, trbajaremos objeto,arrays u otros valores.
+            for(llave in subject)
+            {
+                const keyIsObject = isObject(subject[llave]);
+             //con keyIsObject VUELVO a validar si los datos DENTRO de la estructura de datos YA VALIDADA son objetos o datos. 
+                if(keyIsObject)
+                {
+                    copySuject[llave] = deepCopy(subject[llave])
+                    // si resulta que son objetos, entonces iremos copiando y pegando los datos en copySubject, y estos datos se iran copiando de manera identica y exitosa gracias la recursividad deepCopy(subject[key]);
+                }else
+                {
+                    if(subjectIsArray)
+                    {
+                        copySuject.push(subject[llave])
+                    }else
+                    {
+                        copySuject[llave] = subject[llave]
+                    }
+                }
+
+            }
+             //estos 2 ultimos casos son mas sencillos ya que simplemente se basa en arrays u elementos que no sean ni arrays ni objetos   
+            return copySuject
+        }
+    </script>
+</body>
+</html>

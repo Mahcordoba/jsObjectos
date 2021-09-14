@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Instance of</title>
+</head>
+<body>
+    <script>
+        function LearningPaths({
+            name = console.warn('No escribiste el nombre intenta de nuevo'),
+            courses = []
+        })
+        {
+            this.name = name
+            this.console = courses
+        }
+        class prueba
+        {
+            constructor(name)
+            {
+                this.name
+            }
+        }
+        
+        const e1 = new LearningPaths({name: 'Pablito'})
+        console.log(e1 instanceof LearningPaths)
+        const e2 = new prueba('miguel')
+        console.log(e2 instanceof prueba)
+        const falso = {
+            name: 'Soy falso'
+        }
+        console.log(falso instanceof prueba)//false aunque se vean iguales falso no es una instancia de prueba
+        //Con la palabra reservada instaceof podemos verificar si una instancia es un objecto de cierto tipo esto solo verifica objectos creados con prototipos.
+        // Entonces si necesitas validar en un duck typing si un objecto es un objecto instanciado de un prototipo expecifico puedes usar esta propiedad 👍🏼
+    </script>
+</body>
+</html>

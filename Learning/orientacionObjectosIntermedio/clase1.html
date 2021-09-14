@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object y algunas de sus funciones</title>
+</head>
+<body>
+    <script>
+        const miguel ={
+            name: 'Miguel',
+            age: 28,
+            lastName: 'Herera',
+            courses: ['cuso1'],
+
+            addCoures(newCourse)
+            {
+                this.courses.push(newCourse)
+            }
+        }
+
+        console.log(Object.keys(miguel))// Este metodo te trae las llaves de un objeto 
+        console.log(Object.getOwnPropertyNames(miguel))//Hace lo mismo que la anterior
+        console.log(Object.entries(miguel))//Este nos devuelve un array con las llaves y sus valores cada uno en una posicion en este ejemplo la posicion 0 del array hay otra array y en la posicion 0 esta name y en la 1 'Miguel'
+        console.log(Object.getOwnPropertyDescriptor(miguel))//Este nos devuelve un objecto por cada una de las propiedades del objecto se usa mucho para mirar como esta conformado un objecto
+
+        Object.defineProperty(miguel, 'esNumerable', {
+            value: 'no sirbo en keys',
+            enumerable: false,
+            writable: true,
+            configurable: true
+        })
+        Object.defineProperty(miguel, 'sePuedeEscribir', {
+            value: 'No se puede sobreescribir en mi',
+            enumerable: true,
+            writable: false,
+            configurable: true
+        })
+        Object.defineProperty(miguel, 'configurable', {
+            value: '',
+            enumerable: true,
+            writable: true,
+            configurable: false
+        })
+        Object.defineProperty(miguel, 'pruebaNasa', {
+            value: 'Extraterrestres',
+            enumerable: false,
+            writable: false,
+            configurable: false
+        })// enumerable = false esto hace que la propiedad que la tenga no pueda ser numerables Object.keys. 
+        //writable = false esto hace que la propiedad no se le pueda sobreescribir su valor
+        // configurable = false impide que se pueda borrar la propiedad 
+        // Para borrar una propiedad de un objecto se usa la palabra reservada delete + objecto.propiedad
+        console.log(Object.getOwnPropertyDescriptor(miguel))
+        //Para terminar
+        Object.seal(miguel);//Todas las propiedades del objecto quedadn con configurable= false
+        Object.freeze(miguel);// Todas las propiedades quedam con writable= false
+    </script>
+</body>
+</html>
