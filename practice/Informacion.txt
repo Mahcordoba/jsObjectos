@@ -1,0 +1,3 @@
+Guias sacadas de esta pagina https://objetos1wollokunq.gitlab.io/material/#guides
+Al terminar las guias hacer los ejercicios de esta pagina que es de la misma: https://web-ciu-programacion.github.io/site/javascript/javascript-clases-ejemplos.html
+
